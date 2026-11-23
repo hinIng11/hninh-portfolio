@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Hải Ninh | Portfolio Cá Nhân</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- BIẾN MÀU SẮC & CẤU HÌNH CHUNG --- */
+        :root {
+            --primary: #0f294a;       /* Xanh Navy đậm - Học thuật, chiều sâu */
+            --primary-light: #1e4273;
+            --accent: #f97316;        /* Cam năng động - Tình nguyện, sáng tạo */
+            --accent-hover: #ea580c;
+            --bg-light: #f8fafc;      /* Nền sáng hiện đại */
+            --bg-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 6px -1px rgba(15, 41, 74, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(15, 41, 74, 0.1);
+            --shadow-lg: 0 20px 35px -10px rgba(15, 41, 74, 0.15);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Hiệu ứng cuộn mượt mà */
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        /* --- HIỆU ỨNG XUẤT HIỆN KHI LƯỚT XUỐNG (SCROLL REVEAL) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- THANH ĐIỀU HƯỚNG (STICKY NAVBAR) --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 76px;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 8px 20px -4px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 45%),
+                        radial-gradient(circle at bottom left, rgba(15, 41, 74, 0.06), transparent 50%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(249, 115, 22, 0.12);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.12rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 560px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-image-wrap {
+            position: relative;
+        }
+
+        .hero-image-wrap img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 6px solid #fff;
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: -20px;
+            left: -24px;
+            background: #fff;
+            padding: 16px 22px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border: 1px solid var(--border-color);
+        }
+
+        .floating-card i {
+            font-size: 1.6rem;
+            color: var(--accent);
+            background: rgba(249, 115, 22, 0.12);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        /* --- TIÊU ĐỀ TỪNG PHẦN --- */
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- PHẦN 1: HỌC THUẬT & KHẢO CỔ HỌC --- */
+        .bg-white-section {
+            background-color: var(--bg-white);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 28px;
+            border-left: 3px solid rgba(15, 41, 74, 0.15);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 34px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.25);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            font-size: 0.96rem;
+        }
+
+        .link-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+
+        .social-pill:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .media-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .mini-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .gallery-img {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 160px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gallery-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-img:hover img {
+            transform: scale(1.08);
+        }
+
+        /* --- PHẦN 2: ĐỘI SVTN XUNG KÍCH --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 32px 24px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+        }
+
+        .stat-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .volunteer-showcase {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .v-card {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 280px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .v-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .v-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .v-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 41, 74, 0.9), transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: #fff;
+        }
+
+        .v-overlay h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+
+        .v-overlay p {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* --- PHẦN 3: SỞ THÍCH CÁ NHÂN --- */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .hobby-card {
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            background: var(--bg-white);
+        }
+
+        .hobby-thumb {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hobby-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hobby-card:hover .hobby-thumb img {
+            transform: scale(1.08);
+        }
+
+        .hobby-icon {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hobby-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hobby-body h3 {
+            font-size: 1.22rem;
+            margin-bottom: 10px;
+        }
+
+        .hobby-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .hobby-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hobby-link:hover {
+            gap: 10px;
+        }
+
+        /* --- FORM LIÊN HỆ --- */
+        .contact-wrapper {
+            background: var(--primary);
+            border-radius: 24px;
+            padding: 60px;
+            color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 50px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info h2 {
+            color: #fff;
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: #fff;
+            padding: 36px;
+            border-radius: 20px;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-status {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #16a34a;
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #091a30;
+            color: rgba(255, 255, 255, 0.75);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .footer-socials a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* --- RESPONSIVE CHO ĐIỆN THOẠI & TABLET --- */
+        @media (max-width: 960px) {
+            .hero-grid, .arch-grid, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .stats-grid, .volunteer-showcase, .hobbies-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .contact-wrapper {
+                padding: 36px 24px;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                position: fixed;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border-color);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .stats-grid, .volunteer-showcase, .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+            .floating-card {
+                left: 12px;
+                bottom: 12px;
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH ĐIỀU HƯỚNG -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">hninh<span>.xyz</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#gioi-thieu">Giới thiệu</a></li>
+                <li><a href="#khao-co">Khảo cổ học</a></li>
+                <li><a href="#xung-kich">Xung Kích</a></li>
+                <li><a href="#so-thich">Sở thích</a></li>
+                <li><a href="#lien-he">Liên hệ</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="gioi-thieu">
+        <div class="container hero-grid">
+            <div class="reveal">
+                <span class="badge">Chào mừng đến với không gian của tôi</span>
+                <h1>Xin chào, tôi là <span>Nguyễn Hải Ninh</span></h1>
+                <p>Sinh viên năm 2 ngành Lịch sử (chuyên ngành Khảo cổ học) tại ĐHKHXH&NV - ĐHQGHN, Ủy viên Ban Lãnh Đội Đội SVTN Xung Kích và là người đam mê lưu giữ ký ức qua ống kính & di sản.</p>
+                <div class="hero-actions">
+                    <a href="#khao-co" class="btn btn-primary">
+                        Khám phá hành trình <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <a href="#lien-he" class="btn btn-outline">
+                        Kết nối với tôi <i class="fas fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image-wrap reveal">
+                <!-- THAY LINK ẢNH CHÂN DUNG CỦA BẠN VÀO ĐÂY -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Nguyễn Hải Ninh">
+                <div class="floating-card">
+                    <i class="fas fa-landmark"></i>
+                    <div>
+                        <strong style="display:block; color: var(--primary);">K70 Lịch sử - VNU USSH</strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">Khảo cổ học & Hoạt động Xã hội</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHẦN 1: SINH VIÊN NGÀNH LỊCH SỬ - KHẢO CỔ HỌC -->
+    <section class="bg-white-section" id="khao-co">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge">Phần 01 • Học thuật & Nghiên cứu</span>
+                <h2>Sinh viên Năm 2 Ngành Lịch sử</h2>
+                <p>Định hướng chuyên sâu về Khảo cổ học với khát vọng trở thành giảng viên, nhà nghiên cứu giải mã những tầng văn hóa dưới lòng đất.</p>
+            </div>
+
+            <div class="arch-grid">
+                <!-- Cột trái: Kinh nghiệm thực địa & Liên kết -->
+                <div class="reveal">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">2025 - Hiện tại</span>
+                            <h3>Sinh viên Khóa K70 - Khoa Lịch sử (ĐHKHXH&NV)</h3>
+                            <p>Theo đuổi chuyên ngành Khảo cổ học, rèn luyện kỹ năng điền dã, vẽ bản đồ địa tầng, chỉnh lý hiện vật và nghiên cứu tư liệu lịch sử.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">Tháng 08/2026</span>
+                            <h3>Khai quật di tích mộ gạch thời Tùy – Đường tại Nghệ An</h3>
+                            <p>Tham gia đợt khai quật thực địa kéo dài 1 tháng, trực tiếp bóc tách địa tầng, ghi chép nhật ký hố đào và xử lý tư liệu hiện vật.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-date">12/2025 - 01/2026</span>
+                            <h3>Trưởng đoàn sinh viên thực tập tại di tích Chạp Khê (Quảng Ninh)</h3>
+                            <p>Điều phối và dẫn dắt đoàn 64 sinh viên K70 trong kỳ thực tập khai quật khảo cổ học kéo dài 15 ngày tại phường Vàng Danh.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 24px; margin-bottom: 12px;">Kênh chia sẻ kiến thức của tôi:</h4>
+                    <div class="link-group">
+                        <a href="https://youtube.com/@hninhls" target="_blank" class="social-pill">
+                            <i class="fab fa-youtube" style="color: #ef4444;"></i> YouTube: hinIng - Xưa & Nay
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-pill">
+                            <i class="fab fa-facebook" style="color: #2563eb;"></i> Fanpage: Chuyện Khảo Cổ
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cột phải: Video & Thư viện ảnh điền dã -->
+                <div class="media-box reveal">
+                    <div class="video-wrapper">
+                        <!-- THAY MÃ VIDEO YOUTUBE CỦA BẠN VÀO SAU CHỮ /embed/ -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video tư liệu khảo cổ" allowfullscreen></iframe>
+                    </div>
+                    <div class="mini-gallery">
+                        <div class="gallery-img">
+                            <!-- THAY ẢNH ĐIỀN DÃ KHẢO CỔ 1 -->
+                            <img src="https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?auto=format&fit=crop&w=600&q=80" alt="Thực địa khảo cổ 1">
+                        </div>
+                        <div class="gallery-img">
+                            <!-- THAY ẢNH ĐIỀN DÃ KHẢO CỔ 2 -->
+                            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Thực địa khảo cổ 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHẦN 2: ỦY VIÊN BAN LÃNH ĐỘI ĐỘI SVTN XUNG KÍCH -->
+    <section id="xung-kich">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge">Phần 02 • Tuổi trẻ & Cống hiến</span>
+                <h2>Ủy viên Ban Lãnh Đội - Đội SVTN Xung Kích</h2>
+                <p>Nơi rèn luyện bản lĩnh tổ chức, kỹ năng điều phối nhân sự và lan tỏa ngọn lửa tình nguyện của sinh viên Nhân văn.</p>
+            </div>
+
+            <!-- 3 Thẻ số liệu nổi bật -->
+            <div class="stats-grid reveal">
+                <div class="stat-card">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Thành viên mới</div>
+                    <p class="stat-desc">Trực tiếp điều phối cơ cấu tổ chức, đào tạo và đồng hành cùng hơn 100 tình nguyện viên thế hệ mới.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Phó ban</div>
+                    <div class="stat-label">Đối ngoại Mùa Hè Xanh 2026</div>
+                    <p class="stat-desc">Chiến dịch "Gieo Miền Nắng" tại xã Púng Luông, Lào Cai – kết nối nguồn lực vì cộng đồng vùng cao.</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Ánh Ngàn</div>
+                    <div class="stat-label">Dự án Đèn Năng Lượng Mặt Trời</div>
+                    <p class="stat-desc">Triển khai lắp đặt hệ thống chiếu sáng bền vững, thắp sáng những tuyến đường bản vùng cao.</p>
+                </div>
+            </div>
+
+            <!-- Lưới ảnh hoạt động Xung Kích -->
+            <div class="volunteer-showcase reveal">
+                <div class="v-card">
+                    <!-- THAY ẢNH XUNG KÍCH 1 -->
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=80" alt="Mùa Hè Xanh 2026">
+                    <div class="v-overlay">
+                        <h4>Mùa Hè Xanh 2026: Gieo Miền Nắng</h4>
+                        <p>Hành trình tình nguyện tại Púng Luông, Lào Cai</p>
+                    </div>
+                </div>
+                <div class="v-card">
+                    <!-- THAY ẢNH XUNG KÍCH 2 -->
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Ban Lãnh Đội Xung Kích">
+                    <div class="v-overlay">
+                        <h4>Điều phối & Tổ chức Sự kiện</h4>
+                        <p>Phụ trách kỹ thuật sân khấu, hình ảnh và vận hành đội hình</p>
+                    </div>
+                </div>
+                <div class="v-card">
+                    <!-- THAY ẢNH XUNG KÍCH 3 -->
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Tuyển thành viên mới">
+                    <div class="v-overlay">
+                        <h4>Tiếp lửa Thế hệ Kế cận</h4>
+                        <p>Đào tạo và gắn kết hơn 100 thành viên mới của Đội</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHẦN 3: SỞ THÍCH CÁ NHÂN -->
+    <section class="bg-white-section" id="so-thich">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge">Phần 03 • Đời sống & Đam mê</span>
+                <h2>Những Sở Thích Cá Nhân</h2>
+                <p>Bên cạnh giảng đường và các chiến dịch tình nguyện là những góc nhỏ nuôi dưỡng sự sáng tạo và cân bằng cuộc sống.</p>
+            </div>
+
+            <div class="hobbies-grid reveal">
+                <!-- Sở thích 1 -->
+                <div class="hobby-card">
+                    <div class="hobby-thumb">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Nhiếp ảnh & Kỹ thuật Visual">
+                        <div class="hobby-icon"><i class="fas fa-camera-retro"></i></div>
+                    </div>
+                    <div class="hobby-body">
+                        <h3>Nhiếp ảnh & Kỹ thuật Visual</h3>
+                        <p>Ghi lại khoảnh khắc qua ống kính DSLR, dựng video bằng DaVinci Resolve và vận hành kỹ thuật hình ảnh/livestream cho các sự kiện sân khấu.</p>
+                        <a href="#lien-he" class="hobby-link">Xem bộ sưu tập ảnh <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sở thích 2 -->
+                <div class="hobby-card">
+                    <div class="hobby-thumb">
+                        <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Bóng đá & FC Barcelona">
+                        <div class="hobby-icon"><i class="fas fa-futbol"></i></div>
+                    </div>
+                    <div class="hobby-body">
+                        <h3>Bóng đá & Cộng đồng Culés</h3>
+                        <p>Tình yêu lớn với CLB FC Barcelona, tham gia sáng tạo nội dung, thiết kế ấn phẩm và kết nối cộng đồng người hâm mộ tại Hà Nội.</p>
+                        <a href="https://facebook.com" target="_blank" class="hobby-link">Kết nối cộng đồng <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Sở thích 3 -->
+                <div class="hobby-card">
+                    <div class="hobby-thumb">
+                        <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=600&q=80" alt="Thú cưng & Thủy sinh">
+                        <div class="hobby-icon"><i class="fas fa-fish"></i></div>
+                    </div>
+                    <div class="hobby-body">
+                        <h3>Thú cưng & Thủy sinh Mini</h3>
+                        <p>Chăm sóc bé cún Pomeranian tinh nghịch và tự tay setup, duy trì bể thủy sinh mini trên bàn học để thư giãn sau những giờ nghiên cứu.</p>
+                        <a href="#lien-he" class="hobby-link">Trò chuyện cùng mình <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM LIÊN HỆ -->
+    <section id="lien-he">
+        <div class="container">
+            <div class="contact-wrapper reveal">
+                <div class="contact-info">
+                    <span class="badge" style="background: rgba(255,255,255,0.15); color: #fff;">Kết nối & Hợp tác</span>
+                    <h2>Gửi lời nhắn cho Hải Ninh</h2>
+                    <p>Bạn muốn trao đổi về lịch sử - khảo cổ, hợp tác tổ chức sự kiện, kỹ thuật media hay đơn giản là làm quen? Hãy để lại thông tin nhé!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong style="display:block;">Địa điểm</strong>
+                            <span style="font-size: 0.92rem; opacity: 0.85;">Thanh Xuân, Hà Nội (ĐHKHXH&NV)</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <strong style="display:block;">Website chính thức</strong>
+                            <span style="font-size: 0.92rem; opacity: 0.85;">https://hninh.xyz</span>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong style="display:block;">Email liên hệ</strong>
+                            <span style="font-size: 0.92rem; opacity: 0.85;">contact@hninh.xyz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biểu mẫu -->
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Họ và tên của bạn</label>
+                        <input type="text" id="name" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Địa chỉ Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">Chủ đề trao đổi</label>
+                        <select id="topic" class="form-control">
+                            <option value="Học thuật & Khảo cổ">Học thuật & Khảo cổ học</option>
+                            <option value="Hoạt động Tình nguyện">Hoạt động Tình nguyện / Xung Kích</option>
+                            <option value="Media & Kỹ thuật">Nhiếp ảnh / Dựng video / Kỹ thuật sự kiện</option>
+                            <option value="Khác">Kết bạn & Trò chuyện khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Lời nhắn</label>
+                        <textarea id="message" class="form-control" placeholder="Nhập nội dung bạn muốn gửi..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Gửi tin nhắn <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div class="form-status" id="formStatus">
+                        <i class="fas fa-check-circle"></i> Cảm ơn bạn! Tin nhắn của bạn đã được ghi nhận.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-socials">
+                <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://youtube.com/@hninhls" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:contact@hninh.xyz" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 <strong>Nguyễn Hải Ninh</strong> (hninh.xyz). Thiết kế và xây dựng với niềm đam mê Lịch sử & Sáng tạo.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT XỬ LÝ HIỆU ỨNG -->
+    <script>
+        // 1. Menu Mobile Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Đóng menu khi bấm vào link trên điện thoại
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // 2. Hiệu ứng xuất hiện mượt mà khi cuộn trang (Scroll Reveal)
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Kích hoạt ngay khi tải trang
+        revealOnScroll();
+
+        // 3. Xử lý gửi Form liên hệ (Demo thông báo mượt mà)
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formStatus.style.display = 'block';
+            contactForm.reset();
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
