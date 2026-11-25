@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khảo cổ học & Nghiên cứu | Nguyễn Hải Ninh</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f294a;
+            --accent: #f97316;
+            --accent-hover: #ea580c;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --shadow-md: 0 10px 25px -5px rgba(15, 41, 74, 0.1);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--bg-light); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--primary); }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+        /* HEADER ĐỒNG BỘ */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color); z-index: 1000;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+        .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { font-weight: 600; font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        /* BANNER TRANG CON */
+        .sub-hero {
+            padding: 140px 0 70px;
+            background: linear-gradient(135deg, var(--primary) 0%, #1e4273 100%);
+            color: #fff;
+            text-align: center;
+        }
+        .sub-hero h1 { color: #fff; font-size: 2.8rem; margin-bottom: 16px; }
+        .sub-hero p { max-width: 680px; margin: 0 auto; color: rgba(255,255,255,0.85); font-size: 1.1rem; }
+        .breadcrumb { display: inline-block; background: rgba(255,255,255,0.12); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; margin-bottom: 18px; }
+
+        /* NỘI DUNG CHUYÊN SÂU */
+        .section { padding: 70px 0; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        .card {
+            background: var(--bg-white); border-radius: var(--radius); overflow: hidden;
+            border: 1px solid var(--border-color); box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-6px); }
+        .card img { width: 100%; height: 240px; object-fit: cover; }
+        .card-body { padding: 28px; }
+        .tag { display: inline-block; padding: 4px 12px; background: rgba(249, 115, 22, 0.12); color: var(--accent); font-weight: 700; font-size: 0.8rem; border-radius: 6px; margin-bottom: 12px; }
+        .card-body h3 { font-size: 1.35rem; margin-bottom: 12px; }
+        .card-body p { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 20px; }
+
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; background: var(--accent); color: #fff;
+            border-radius: 50px; font-weight: 600; margin-top: 20px;
+        }
+        .btn-back:hover { background: var(--accent-hover); }
+
+        footer { background: #091a30; color: rgba(255, 255, 255, 0.75); padding: 36px 0; text-align: center; }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .sub-hero h1 { font-size: 2rem; }
+            .nav-links { gap: 16px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MENU ĐIỀU HƯỚNG GIỮA CÁC TRANG -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">hninh<span>.xyz</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="khao-co.html" class="active">Khảo cổ học</a></li>
+                <li><a href="index.html#xung-kich">Xung Kích</a></li>
+                <li><a href="index.html#so-thich">Sở thích</a></li>
+                <li><a href="index.html#lien-he">Liên hệ</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- BANNER ĐẦU TRANG KHẢO CỔ -->
+    <section class="sub-hero">
+        <div class="container">
+            <div class="breadcrumb"><a href="index.html">Trang chủ</a> / Chuyên mục Khảo cổ học</div>
+            <h1>Nhật Ký Điền Dã & Khảo Cổ Học</h1>
+            <p>Lưu trữ tư liệu thực tập khai quật, ghi chép địa tầng và các bài viết chia sẻ kiến thức lịch sử của Nguyễn Hải Ninh (K70 Khoa Lịch sử - ĐHKHXH&NV).</p>
+        </div>
+    </section>
+
+    <!-- DANH SÁCH DỰ ÁN KHAI QUẬT & NGHIÊN CỨU -->
+    <section class="section">
+        <div class="container">
+            <div class="grid-2">
+                <!-- Dự án 1 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?auto=format&fit=crop&w=800&q=80" alt="Khai quật Nghệ An">
+                    <div class="card-body">
+                        <span class="tag">Tháng 08/2026 • Nghệ An</span>
+                        <h3>Khai quật di tích mộ gạch thời Tùy – Đường</h3>
+                        <p>Đợt thực địa chuyên sâu kéo dài 1 tháng. Trực tiếp tham gia bóc tách địa tầng, đo vẽ bình đồ kiến trúc mộ gạch, phân loại đồ tùy táng và lập hồ sơ khoa học di tích.</p>
+                        <a href="https://youtube.com/@hninhls" target="_blank" style="color: var(--accent); font-weight: 600;">Xem video tư liệu trên YouTube <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Dự án 2 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Khai quật Chạp Khê">
+                    <div class="card-body">
+                        <span class="tag">12/2025 - 01/2026 • Quảng Ninh</span>
+                        <h3>Trưởng đoàn thực tập tại di tích Chạp Khê</h3>
+                        <p>Đảm nhiệm vai trò Trưởng đoàn điều phối 64 sinh viên K70 Lịch sử trong kỳ thực tập khai quật 15 ngày tại phường Vàng Danh, hoàn thiện báo cáo tổng kết thực tập.</p>
+                        <a href="https://facebook.com" target="_blank" style="color: var(--accent); font-weight: 600;">Đọc bài viết trên Chuyện Khảo Cổ <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Quay về Trang chủ</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 <strong>Nguyễn Hải Ninh</strong> (hninh.xyz) — Chuyên trang Lịch sử & Khảo cổ học.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
