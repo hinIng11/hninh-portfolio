@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Hải Ninh | Portfolio Cá Nhân</title>
+    <title>Nguyễn Hải Ninh | Trang chủ</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
@@ -35,7 +35,7 @@
         }
 
         html {
-            scroll-behavior: smooth; /* Hiệu ứng cuộn mượt mà */
+            scroll-behavior: smooth;
             font-family: 'Inter', sans-serif;
             color: var(--text-dark);
             background-color: var(--bg-light);
@@ -138,11 +138,13 @@
             border-radius: 2px;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -295,7 +297,7 @@
             font-size: 1.05rem;
         }
 
-        /* --- PHẦN 1: HỌC THUẬT & KHẢO CỔ HỌC --- */
+        /* --- PHẦN 1: HỌC THUẬT & LỊCH SỬ - KHẢO CỔ --- */
         .bg-white-section {
             background-color: var(--bg-white);
         }
@@ -383,7 +385,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: var(--radius);
@@ -775,12 +777,12 @@
     <!-- THANH ĐIỀU HƯỚNG -->
     <header>
         <div class="container nav-container">
-            <a href="#" class="logo">hninh<span>.xyz</span></a>
+            <a href="index.html" class="logo">hninh<span>.xyz</span></a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#gioi-thieu">Giới thiệu</a></li>
-                <li><a href="khao-co.html">Khảo cổ học</a></li>
-                <li><a href="#xung-kich">Xung Kích</a></li>
-                <li><a href="#so-thich">Sở thích</a></li>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="lich-su.html">Lịch sử</a></li>
+                <li><a href="xung-kich.html">Xung Kích</a></li>
+                <li><a href="so-thich.html">Sở thích</a></li>
                 <li><a href="#lien-he">Liên hệ</a></li>
             </ul>
             <div class="menu-toggle" id="menuToggle">
@@ -790,15 +792,15 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="hero" id="gioi-thieu">
+    <section class="hero" id="trang-chu">
         <div class="container hero-grid">
             <div class="reveal">
                 <span class="badge">Chào mừng đến với không gian của tôi</span>
                 <h1>Xin chào, tôi là <span>Nguyễn Hải Ninh</span></h1>
-                <p>Sinh viên năm 2 ngành Lịch sử (định hướng chuyên ngành Khảo cổ học) tại Trường Đại học Khoa học Xã hội và Nhân văn - ĐHQGHN, Ủy viên Ban Lãnh Đội Đội SVTN Xung Kích và là người đam mê lưu giữ ký ức qua ống kính & di sản.</p>
+                <p>Sinh viên năm 2 ngành Lịch sử (chuyên ngành Khảo cổ học) tại ĐHKHXH&NV - ĐHQGHN, Ủy viên Ban Lãnh Đội Đội SVTN Xung Kích và là người đam mê lưu giữ ký ức qua ống kính & di sản.</p>
                 <div class="hero-actions">
-                    <a href="#khao-co" class="btn btn-primary">
-                        Khám phá hành trình <i class="fas fa-arrow-down"></i>
+                    <a href="lich-su.html" class="btn btn-primary">
+                        Khám phá hành trình <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="#lien-he" class="btn btn-outline">
                         Kết nối với tôi <i class="fas fa-paper-plane"></i>
@@ -806,7 +808,6 @@
                 </div>
             </div>
             <div class="hero-image-wrap reveal">
-                <!-- THAY LINK ẢNH CHÂN DUNG CỦA BẠN VÀO ĐÂY -->
                 <img src="chan-dung.jpg" alt="Nguyễn Hải Ninh">
                 <div class="floating-card">
                     <i class="fas fa-landmark"></i>
@@ -820,21 +821,20 @@
     </section>
 
     <!-- PHẦN 1: SINH VIÊN NGÀNH LỊCH SỬ - KHẢO CỔ HỌC -->
-    <section class="bg-white-section" id="khao-co">
+    <section class="bg-white-section" id="lich-su">
         <div class="container">
             <div class="section-header reveal">
                 <span class="badge">Phần 01 • Học thuật & Nghiên cứu</span>
                 <h2>Sinh viên Năm 2 Ngành Lịch sử</h2>
-                <p>Định hướng về Khảo cổ học với khát vọng trở thành giảng viên, nhà nghiên cứu giải mã những tầng văn hóa dưới lòng đất.</p>
+                <p>Định hướng chuyên sâu về Khảo cổ học với khát vọng trở thành giảng viên, nhà nghiên cứu giải mã những tầng văn hóa dưới lòng đất.</p>
             </div>
 
             <div class="arch-grid">
-                <!-- Cột trái: Kinh nghiệm thực địa & Liên kết -->
                 <div class="reveal">
                     <div class="timeline">
                         <div class="timeline-item">
                             <span class="timeline-date">2025 - Hiện tại</span>
-                            <h3>Sinh viên Khóa K70 - Khoa Lịch sử và Văn hóa (ĐHKHXH&NV)</h3>
+                            <h3>Sinh viên Khóa K70 - Khoa Lịch sử (ĐHKHXH&NV)</h3>
                             <p>Theo đuổi chuyên ngành Khảo cổ học, rèn luyện kỹ năng điền dã, vẽ bản đồ địa tầng, chỉnh lý hiện vật và nghiên cứu tư liệu lịch sử.</p>
                         </div>
                         <div class="timeline-item">
@@ -843,14 +843,16 @@
                             <p>Tham gia đợt khai quật thực địa kéo dài 1 tháng, trực tiếp bóc tách địa tầng, ghi chép nhật ký hố đào và xử lý tư liệu hiện vật.</p>
                         </div>
                         <div class="timeline-item">
-                            <span class="timeline-date">Tháng 12/2025</span>
+                            <span class="timeline-date">12/2025 - 01/2026</span>
                             <h3>Trưởng đoàn sinh viên thực tập tại di tích Chạp Khê (Quảng Ninh)</h3>
                             <p>Điều phối và dẫn dắt đoàn 64 sinh viên K70 trong kỳ thực tập khai quật khảo cổ học kéo dài 15 ngày tại phường Vàng Danh.</p>
                         </div>
                     </div>
 
-                    <h4 style="margin-top: 24px; margin-bottom: 12px;">Kênh chia sẻ kiến thức của tôi:</h4>
                     <div class="link-group">
+                        <a href="lich-su.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
+                            Xem chi tiết chuyên trang Lịch sử <i class="fas fa-arrow-right"></i>
+                        </a>
                         <a href="https://youtube.com/@hninhls" target="_blank" class="social-pill">
                             <i class="fab fa-youtube" style="color: #ef4444;"></i> YouTube: hinIng - Xưa & Nay
                         </a>
@@ -860,19 +862,15 @@
                     </div>
                 </div>
 
-                <!-- Cột phải: Video & Thư viện ảnh điền dã -->
                 <div class="media-box reveal">
                     <div class="video-wrapper">
-                        <!-- THAY MÃ VIDEO YOUTUBE CỦA BẠN VÀO SAU CHỮ /embed/ -->
                         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video tư liệu khảo cổ" allowfullscreen></iframe>
                     </div>
                     <div class="mini-gallery">
                         <div class="gallery-img">
-                            <!-- THAY ẢNH ĐIỀN DÃ KHẢO CỔ 1 -->
                             <img src="https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?auto=format&fit=crop&w=600&q=80" alt="Thực địa khảo cổ 1">
                         </div>
                         <div class="gallery-img">
-                            <!-- THAY ẢNH ĐIỀN DÃ KHẢO CỔ 2 -->
                             <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Thực địa khảo cổ 2">
                         </div>
                     </div>
@@ -890,7 +888,6 @@
                 <p>Nơi rèn luyện bản lĩnh tổ chức, kỹ năng điều phối nhân sự và lan tỏa ngọn lửa tình nguyện của sinh viên Nhân văn.</p>
             </div>
 
-            <!-- 3 Thẻ số liệu nổi bật -->
             <div class="stats-grid reveal">
                 <div class="stat-card">
                     <div class="stat-number">100+</div>
@@ -903,16 +900,14 @@
                     <p class="stat-desc">Chiến dịch "Gieo Miền Nắng" tại xã Púng Luông, Lào Cai – kết nối nguồn lực vì cộng đồng vùng cao.</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">Gieo Miền Nắng</div>
+                    <div class="stat-number">Ánh Ngàn</div>
                     <div class="stat-label">Dự án Đèn Năng Lượng Mặt Trời</div>
                     <p class="stat-desc">Triển khai lắp đặt hệ thống chiếu sáng bền vững, thắp sáng những tuyến đường bản vùng cao.</p>
                 </div>
             </div>
 
-            <!-- Lưới ảnh hoạt động Xung Kích -->
             <div class="volunteer-showcase reveal">
                 <div class="v-card">
-                    <!-- THAY ẢNH XUNG KÍCH 1 -->
                     <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=600&q=80" alt="Mùa Hè Xanh 2026">
                     <div class="v-overlay">
                         <h4>Mùa Hè Xanh 2026: Gieo Miền Nắng</h4>
@@ -920,7 +915,6 @@
                     </div>
                 </div>
                 <div class="v-card">
-                    <!-- THAY ẢNH XUNG KÍCH 2 -->
                     <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Ban Lãnh Đội Xung Kích">
                     <div class="v-overlay">
                         <h4>Điều phối & Tổ chức Sự kiện</h4>
@@ -928,13 +922,18 @@
                     </div>
                 </div>
                 <div class="v-card">
-                    <!-- THAY ẢNH XUNG KÍCH 3 -->
                     <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=600&q=80" alt="Tuyển thành viên mới">
                     <div class="v-overlay">
                         <h4>Tiếp lửa Thế hệ Kế cận</h4>
                         <p>Đào tạo và gắn kết hơn 100 thành viên mới của Đội</p>
                     </div>
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 36px;" class="reveal">
+                <a href="xung-kich.html" class="btn btn-outline">
+                    Khám phá thêm hoạt động Xung Kích <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -949,7 +948,6 @@
             </div>
 
             <div class="hobbies-grid reveal">
-                <!-- Sở thích 1 -->
                 <div class="hobby-card">
                     <div class="hobby-thumb">
                         <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Nhiếp ảnh & Kỹ thuật Visual">
@@ -958,11 +956,10 @@
                     <div class="hobby-body">
                         <h3>Nhiếp ảnh & Kỹ thuật Visual</h3>
                         <p>Ghi lại khoảnh khắc qua ống kính DSLR, dựng video bằng DaVinci Resolve và vận hành kỹ thuật hình ảnh/livestream cho các sự kiện sân khấu.</p>
-                        <a href="#lien-he" class="hobby-link">Xem bộ sưu tập ảnh <i class="fas fa-arrow-right"></i></a>
+                        <a href="so-thich.html" class="hobby-link">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Sở thích 2 -->
                 <div class="hobby-card">
                     <div class="hobby-thumb">
                         <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80" alt="Bóng đá & FC Barcelona">
@@ -971,11 +968,10 @@
                     <div class="hobby-body">
                         <h3>Bóng đá & Cộng đồng Culés</h3>
                         <p>Tình yêu lớn với CLB FC Barcelona, tham gia sáng tạo nội dung, thiết kế ấn phẩm và kết nối cộng đồng người hâm mộ tại Hà Nội.</p>
-                        <a href="https://facebook.com" target="_blank" class="hobby-link">Kết nối cộng đồng <i class="fas fa-arrow-right"></i></a>
+                        <a href="so-thich.html" class="hobby-link">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Sở thích 3 -->
                 <div class="hobby-card">
                     <div class="hobby-thumb">
                         <img src="https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=600&q=80" alt="Thú cưng & Thủy sinh">
@@ -984,7 +980,7 @@
                     <div class="hobby-body">
                         <h3>Thú cưng & Thủy sinh Mini</h3>
                         <p>Chăm sóc bé cún Pomeranian tinh nghịch và tự tay setup, duy trì bể thủy sinh mini trên bàn học để thư giãn sau những giờ nghiên cứu.</p>
-                        <a href="#lien-he" class="hobby-link">Trò chuyện cùng mình <i class="fas fa-arrow-right"></i></a>
+                        <a href="so-thich.html" class="hobby-link">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1023,41 +1019,39 @@
                     </div>
                 </div>
 
-                <!-- Biểu mẫu -->
+                <!-- Biểu mẫu kết nối Web3Forms -->
                 <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
-    <!-- Mã nhận diện hộp thư của bạn -->
-    <input type="hidden" name="access_key" value="8810801c-44de-47bf-bd38-2815c481e711">
-    <!-- Tiêu đề thư gửi về hộp thư -->
-    <input type="hidden" name="subject" value="Tin nhắn mới từ website hninh.xyz">
+                    <input type="hidden" name="access_key" value="DÁN_MÃ_ACCESS_KEY_CỦA_BẠN_VÀO_ĐÂY">
+                    <input type="hidden" name="subject" value="Tin nhắn mới từ website hninh.xyz">
 
-    <div class="form-group">
-        <label for="name">Họ và tên của bạn</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" required>
-    </div>
-    <div class="form-group">
-        <label for="email">Địa chỉ Email</label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="email@example.com" required>
-    </div>
-    <div class="form-group">
-        <label for="topic">Chủ đề trao đổi</label>
-        <select id="topic" name="topic" class="form-control">
-            <option value="Học thuật & Khảo cổ">Học thuật & Khảo cổ học</option>
-            <option value="Hoạt động Tình nguyện">Hoạt động Tình nguyện / Xung Kích</option>
-            <option value="Media & Kỹ thuật">Nhiếp ảnh / Dựng video / Kỹ thuật sự kiện</option>
-            <option value="Khác">Kết bạn & Trò chuyện khác</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="message">Lời nhắn</label>
-        <textarea id="message" name="message" class="form-control" placeholder="Nhập nội dung bạn muốn gửi..." required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-        Gửi tin nhắn <i class="fas fa-paper-plane"></i>
-    </button>
-    <div class="form-status" id="formStatus">
-        <i class="fas fa-check-circle"></i> Cảm ơn bạn! Tin nhắn đã được gửi tới Hải Ninh.
-    </div>
-</form>
+                    <div class="form-group">
+                        <label for="name">Họ và tên của bạn</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Địa chỉ Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="topic">Chủ đề trao đổi</label>
+                        <select id="topic" name="topic" class="form-control">
+                            <option value="Học thuật & Khảo cổ">Học thuật & Khảo cổ học</option>
+                            <option value="Hoạt động Tình nguyện">Hoạt động Tình nguyện / Xung Kích</option>
+                            <option value="Media & Kỹ thuật">Nhiếp ảnh / Dựng video / Kỹ thuật sự kiện</option>
+                            <option value="Khác">Kết bạn & Trò chuyện khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Lời nhắn</label>
+                        <textarea id="message" name="message" class="form-control" placeholder="Nhập nội dung bạn muốn gửi..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        Gửi tin nhắn <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <div class="form-status" id="formStatus">
+                        <i class="fas fa-check-circle"></i> Cảm ơn bạn! Tin nhắn của bạn đã được gửi đi.
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -1069,7 +1063,7 @@
                 <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://youtube.com/@hninhls" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:contact@hninh.xyz" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:lienhe@hninh.xyz" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
             <p>&copy; 2026 <strong>Nguyễn Hải Ninh</strong> (hninh.xyz). Thiết kế và xây dựng với niềm đam mê Lịch sử & Sáng tạo.</p>
         </div>
@@ -1108,9 +1102,9 @@
         }
 
         window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Kích hoạt ngay khi mở trang
+        revealOnScroll();
 
-        // 3. Xử lý gửi Form liên hệ qua Web3Forms
+        // 3. Xử lý gửi Form liên hệ
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
 
