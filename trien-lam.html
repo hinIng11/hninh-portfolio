@@ -406,19 +406,22 @@
         }
 
         .artifact-media {
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-            background: #231f1e;
-        }
+    width: 100%;
+    aspect-ratio: 16 / 9;       /* Giữ đúng tỷ lệ vàng 1920x1080 của slide */
+    height: auto;               /* Bỏ chiều cao cứng để ảnh tự co giãn đúng tỷ lệ */
+    position: relative;
+    overflow: hidden;
+    background: #f3ede2;        /* Nền đồng bộ với giấy lưu trữ */
+    border-bottom: 1px solid var(--border-archival);
+}
 
-        .artifact-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: sepia(18%) contrast(103%);
-            transition: transform 0.5s ease;
-        }
+.artifact-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;        /* Hiển thị toàn bộ 100% nội dung ảnh, tuyệt đối không xén mép */
+    filter: none;               /* Giữ nguyên màu sắc gốc sắc nét của slide */
+    transition: transform 0.4s ease;
+}
 
         .artifact-card:hover .artifact-media img {
             transform: scale(1.07);
@@ -988,7 +991,7 @@
                 )">
                     <div class="artifact-media">
                         <span class="artifact-code">TL-07 • Huy động toàn dân</span>
-                        <img src="huy-dong-nguon-luc-.png" alt="Huy động toàn dân 1945-1946">
+                        <img src="huy-dong-nguon-luc.png" alt="Huy động toàn dân 1945-1946">
                         <span class="zoom-hint"><i class="fas fa-expand"></i></span>
                     </div>
                     <div class="artifact-body">
