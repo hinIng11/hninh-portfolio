@@ -381,7 +381,7 @@
         }
 
         /* --- THẺ HIỆN VẬT & TƯ LIỆU TRƯNG BÀY (ARTIFACT CARDS) --- */
-        .artifact-grid {
+      .artifact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 26px;
@@ -644,17 +644,17 @@
         }
 
         .modal-card {
-            background: var(--paper-white);
-            max-width: 820px;
-            width: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            animation: popIn 0.3s ease;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-        }
+    background: var(--paper-white);
+    max-width: 1080px;          /* Mở rộng cửa sổ xem chi tiết lên 1080px */
+    width: 94%;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    animation: popIn 0.3s ease;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+}
 
         @keyframes popIn {
             from { transform: scale(0.94); opacity: 0; }
@@ -683,14 +683,16 @@
             overflow-y: auto;
         }
 
-        .modal-img {
-            width: 100%;
-            max-height: 340px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            border: 1px solid var(--border-archival);
-        }
+       .modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 68vh;           /* Hiển thị trọn vẹn slide to rõ trên màn hình */
+    object-fit: contain;        /* Không cắt xén bất kỳ góc nào của ảnh */
+    background: #f3ede2;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-archival);
+}
 
         .modal-meta {
             background: var(--parchment);
