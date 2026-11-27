@@ -555,6 +555,44 @@
             font-size: 1.25rem;
         }
 
+        /* Nút mở rộng ở cuối mỗi hàng trong bảng ma trận */
+.matrix-action-cell {
+    width: 64px;
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.matrix-expand-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1.5px solid var(--border-archival);
+    color: var(--crimson);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.88rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+}
+
+.matrix-expand-btn:hover {
+    background: var(--crimson);
+    color: #fff;
+    border-color: var(--crimson);
+    transform: scale(1.1);
+}
+
+table.archival-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+table.archival-table tbody tr:hover td {
+    background-color: #f6efe3;
+}
+
         table.archival-table {
             width: 100%;
             border-collapse: collapse;
@@ -1047,11 +1085,11 @@
                 </div>
             </div>
 
-            <!-- Bảng Ma trận Đối chiếu Thể chế 1858-1945 vs 1945-1946 -->
+            <!-- Bảng Ma trận Đối chiếu Thể chế 1858-1945 vs 1945-1946 (Có nút mở rộng) -->
             <div class="matrix-wrapper reveal">
                 <div class="matrix-header-bar">
                     <h3><i class="fas fa-table"></i> Bảng 1: Ma trận đối chiếu thể chế (1858–1945 và 1945–1946)</h3>
-                    <span style="font-size: 0.85rem; color: var(--gold-light);">4 Bình diện phân tích cấu trúc sử học</span>
+                    <span style="font-size: 0.85rem; color: var(--gold-light);">Nhấp biểu tượng mở rộng cuối mỗi hàng để xem chi tiết</span>
                 </div>
                 <table class="archival-table">
                     <thead>
@@ -1060,37 +1098,88 @@
                             <th>Giai đoạn 1858–1945 (Thuộc địa nửa phong kiến)</th>
                             <th>Giai đoạn 1945–1946 (Nền Dân chủ Cộng hòa)</th>
                             <th>Bản chất sự chuyển biến</th>
+                            <th style="width: 64px; text-align: center;">Chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Hàng 1: Hình thức tổ chức -->
                         <tr>
                             <td class="dimension-cell">1. Hình thức tổ chức</td>
                             <td>Cấu trúc phân liệt (“chia để trị” Bắc – Trung – Nam Kỳ dưới Liên bang Đông Dương); chuyên chế, phi hiến, cai trị bằng mật thám và nhà tù.</td>
                             <td>Chính thể Cộng hòa Dân chủ thống nhất; Tổng tuyển cử (06/01/1946), Hiến pháp 1946 khẳng định lãnh thổ bất khả phân; chính quyền địa phương theo Sắc lệnh 63-SL.</td>
                             <td>Chuyển từ mô hình cai trị thực dân phân liệt, chuyên chế sang nhà nước công quyền đơn nhất, hợp hiến và dân chủ nhân dân.</td>
+                            <td class="matrix-action-cell">
+                                <button class="matrix-expand-btn" title="Xem chi tiết bình diện Hình thức tổ chức" onclick="openArtifact(
+                                    'ĐC-01 • Bình diện Hình thức tổ chức',
+                                    'Từ Liên bang Đông Dương phân liệt đến Nhà nước Đơn nhất Hợp hiến (1945–1946)',
+                                    'hinh-thuc-to-chuc.png',
+                                    'Giai đoạn 1858–1945: Thực dân Pháp chia cắt Việt Nam thành 3 kỳ với 3 chế độ pháp lý khác biệt (thuộc địa trực trị, bảo hộ, bán bảo hộ) dưới quyền Toàn quyền Đông Dương.\nGiai đoạn 1945–1946: Thiết lập chính thể Cộng hòa Dân chủ thống nhất Trung – Nam – Bắc (Điều 2 Hiến pháp 1946), tổ chức Tổng tuyển cử phổ thông đầu phiếu (06/01/1946) và xây dựng hệ thống HĐND – Ủy ban hành chính từ Trung ương đến cơ sở theo Sắc lệnh 63-SL.',
+                                    'Hiến pháp nước VNDCCH năm 1946; Sắc lệnh số 63-SL (22/11/1945); Đinh Xuân Lâm (Chủ biên) (2017), Lịch sử Việt Nam, Tập III.'
+                                )">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </td>
                         </tr>
+
+                        <!-- Hàng 2: Tư tưởng chính trị -->
                         <tr>
                             <td class="dimension-cell">2. Tư tưởng chính trị</td>
                             <td>Khủng hoảng ý thức hệ phong kiến – tư sản cũ; thực thi chính sách “ngu dân” khiến hơn 90% dân số mù chữ.</td>
                             <td>Tư tưởng Độc lập dân tộc gắn với Chủ quyền nhân dân (Điều 1 Hiến pháp 1946); cán bộ là “công bộc của dân”; ngoại giao “hòa để tiến”.</td>
                             <td>Chuyển từ nô dịch thuộc địa sang tư tưởng chủ quyền nhân dân, pháp chế dân chủ và phát triển dân trí.</td>
+                            <td class="matrix-action-cell">
+                                <button class="matrix-expand-btn" title="Xem chi tiết bình diện Tư tưởng chính trị" onclick="openArtifact(
+                                    'ĐC-02 • Bình diện Tư tưởng chính trị',
+                                    'Từ khủng hoảng đường lối cứu nước đến tư tưởng Chủ quyền nhân dân',
+                                    'tu-tuong-chinh-tri.png',
+                                    'Giai đoạn 1858–1945: Các khuynh hướng quân chủ (Cần Vương) và dân chủ tư sản (Đông Du, Duy Tân, VNQDĐ) bế tắc vì chưa kết hợp được độc lập dân tộc với quyền lợi đại đa số quần chúng.\nGiai đoạn 1945–1946: Xác lập nguyên lý “Tất cả quyền bính trong nước là của toàn thể nhân dân Việt Nam” (Điều 1 Hiến pháp 1946), đề cao đạo đức công vụ “cán bộ là công bộc của dân” và vận dụng linh hoạt sách lược ngoại giao “hòa để tiến”.',
+                                    'Hiến pháp năm 1946; Hồ Chí Minh Toàn tập, Tập 4 (1945–1946); Trần Văn Giàu (1997).'
+                                )">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </td>
                         </tr>
+
+                        <!-- Hàng 3: Lực lượng xã hội -->
                         <tr>
                             <td class="dimension-cell">3. Lực lượng xã hội</td>
                             <td>Xã hội phân hóa sâu sắc, đa số nhân dân bị tước đoạt quyền chính trị và bầu cử.</td>
                             <td>Khối Đại đoàn kết toàn dân (Mặt trận Việt Minh, Hội Liên Việt); quyền bầu cử bình đẳng từ tuổi 18 không phân biệt giới tính, dân tộc, tôn giáo.</td>
                             <td>Chuyển từ quần chúng bị trị thành công dân bình đẳng, chủ thể tối cao của quyền lực nhà nước.</td>
+                            <td class="matrix-action-cell">
+                                <button class="matrix-expand-btn" title="Xem chi tiết bình diện Lực lượng xã hội" onclick="openArtifact(
+                                    'ĐC-03 • Bình diện Lực lượng xã hội',
+                                    'Từ thân phận nô lệ thuộc địa trở thành Công dân làm chủ đất nước',
+                                    'luc-luong-xa-hoi.png',
+                                    'Giai đoạn 1858–1945: Quần chúng nhân dân chịu cảnh “một cổ hai tròng”, bị tước đoạt các quyền tự do dân chủ cơ bản.\nGiai đoạn 1945–1946: Mọi công dân Việt Nam từ 18 tuổi trở lên đều có quyền bầu cử và từ 21 tuổi trở lên có quyền ứng cử (Sắc lệnh 14-SL), quy tụ rộng rãi trong Mặt trận Việt Minh và Hội Liên Việt, xóa bỏ rào cản giai cấp, giới tính và dân tộc.',
+                                    'Sắc lệnh số 14-SL (08/09/1945); Đinh Thị Thu Cúc (2017), Lịch sử Việt Nam tập 10, tr. 75–80.'
+                                )">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </td>
                         </tr>
+
+                        <!-- Hàng 4: Năng lực quản trị -->
                         <tr>
                             <td class="dimension-cell">4. Năng lực quản trị</td>
                             <td>Quản trị bóc lột dựa trên độc quyền thuế muối, rượu, thuốc phiện; bất lực trước khủng hoảng dẫn tới nạn đói 1944–1945.</td>
                             <td>Thể chế hóa thần tốc (Sắc lệnh 67 cứu tế, Sắc lệnh 75 NV/CC trưng tập công chức); lưu hành tiền Việt Nam, xóa mù chữ hơn 2,5 triệu người.</td>
                             <td>Chuyển từ hành chính bóc lột, quan liêu sang quản trị hành chính – kiến tạo, linh hoạt và phục vụ an sinh.</td>
+                            <td class="matrix-action-cell">
+                                <button class="matrix-expand-btn" title="Xem chi tiết bình diện Năng lực quản trị" onclick="openArtifact(
+                                    'ĐC-04 • Bình diện Năng lực quản trị',
+                                    'Bản lĩnh điều hành vượt qua “Giặc đói, Giặc dốt, Giặc ngoại xâm”',
+                                    'nang-luc-quan-tri.png',
+                                    'Giai đoạn 1858–1945: Bộ máy cai trị chỉ tập trung vơ vét tài nguyên và thu thuế, dẫn tới thảm họa nạn đói làm hơn 2 triệu người chết đầu năm 1945.\nGiai đoạn 1945–1946: Nhà nước mới hành động quyết liệt thông qua Sắc lệnh 67 lập Ủy ban cứu tế, Sắc lệnh 75 NV/CC giữ ổn định đội ngũ công chức, huy động 370 kg vàng qua Tuần lễ vàng, phát hành đồng tiền Việt Nam độc lập và xóa mù chữ cho hơn 2,5 triệu người.',
+                                    'Trung tâm Lưu trữ Quốc gia III, Phông Phủ Thủ tướng, Hồ sơ 01; Lê Mậu Hãn (2017), Tập IV.'
+                                )">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
     </section>
 
     <!-- =========================================================
