@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triển Lãm Tư Liệu Số: Từ Phong Trào Giải Phóng Dân Tộc Đến Kiến Tạo Nhà Nước (1945–1946)</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <!-- Google Fonts: Playfair Display (Tiêu đề bảo tàng) & Plus Jakarta Sans / Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- BẢNG MÀU BẢO TÀNG & LƯU TRỮ LỊCH SỬ --- */
+        :root {
+            --crimson: #8b1e1e;        /* Đỏ son di sản / lịch sử */
+            --crimson-dark: #5e1111;
+            --gold: #b4833e;           /* Vàng đồng cổ điển */
+            --gold-light: #e5c690;
+            --navy: #142438;           /* Xanh mực lưu trữ */
+            --parchment: #faf7f2;      /* Nền giấy lưu trữ ấm áp */
+            --paper-white: #ffffff;
+            --text-main: #24211e;
+            --text-muted: #5c564f;
+            --border-archival: #e4dcd0;
+            --shadow-card: 0 10px 30px -10px rgba(36, 33, 30, 0.08);
+            --shadow-hover: 0 20px 40px -12px rgba(139, 30, 30, 0.16);
+            --radius: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--parchment);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, .serif-title {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.28;
+        }
+
+        h3, h4, .sans-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.35;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- HIỆU ỨNG CUỘN MƯỢT --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- THANH ĐIỀU HƯỚNG TRIỂN LÃM --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(250, 247, 242, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-archival);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 74px;
+        }
+
+        .brand-museum {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-badge {
+            background: var(--crimson);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.78rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: var(--navy);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--crimson);
+        }
+
+        .btn-home-back {
+            padding: 8px 16px;
+            border: 1.5px solid var(--crimson);
+            border-radius: 50px;
+            color: var(--crimson) !important;
+            font-size: 0.85rem !important;
+        }
+
+        .btn-home-back:hover {
+            background: var(--crimson);
+            color: #fff !important;
+        }
+
+        .mobile-btn {
+            display: none;
+            font-size: 1.4rem;
+            color: var(--crimson);
+            cursor: pointer;
+        }
+
+        /* --- SẢNH ĐÓN TIẾP TRIỂN LÃM (HERO BANNER) --- */
+        .exhibition-hero {
+            padding: 145px 0 90px;
+            background: linear-gradient(160deg, #1b1412 0%, #3d1212 55%, #142438 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exhibition-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(229, 198, 144, 0.14) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(229, 198, 144, 0.45);
+            background: rgba(180, 131, 62, 0.18);
+            color: var(--gold-light);
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .exhibition-hero h1 {
+            font-size: 3.1rem;
+            color: #fff;
+            max-width: 920px;
+            margin-bottom: 22px;
+        }
+
+        .exhibition-hero h1 span {
+            color: var(--gold-light);
+            font-style: italic;
+        }
+
+        .central-question-box {
+            background: rgba(255, 255, 255, 0.07);
+            border-left: 4px solid var(--gold);
+            padding: 22px 28px;
+            border-radius: 0 12px 12px 0;
+            max-width: 860px;
+            margin-bottom: 34px;
+            backdrop-filter: blur(6px);
+        }
+
+        .central-question-box strong {
+            display: block;
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+
+        .central-question-box p {
+            font-size: 1.08rem;
+            color: rgba(255, 255, 255, 0.94);
+        }
+
+        .room-nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .room-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 22px;
+            background: var(--gold);
+            color: #1b1412;
+            font-weight: 700;
+            font-size: 0.92rem;
+            border-radius: 50px;
+        }
+
+        .room-pill:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .room-pill.secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .room-pill.secondary:hover {
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        /* --- CẤU TRÚC KHÔNG GIAN TRƯNG BÀY --- */
+        .gallery-room {
+            padding: 90px 0;
+            border-bottom: 1px solid var(--border-archival);
+        }
+
+        .room-white {
+            background-color: var(--paper-white);
+        }
+
+        .room-header {
+            margin-bottom: 48px;
+            max-width: 820px;
+        }
+
+        .room-number {
+            display: inline-block;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 0.82rem;
+            color: var(--crimson);
+            background: rgba(139, 30, 30, 0.09);
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .room-header h2 {
+            font-size: 2.35rem;
+            color: var(--navy);
+            margin-bottom: 14px;
+        }
+
+        .room-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* --- KHỐI PHÂN TÍCH LUẬN ĐIỂM & ĐIỂM NGHẼN --- */
+        .analysis-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .thesis-panel {
+            background: var(--paper-white);
+            border: 1px solid var(--border-archival);
+            border-top: 4px solid var(--navy);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .thesis-panel.crimson-top {
+            border-top-color: var(--crimson);
+        }
+
+        .thesis-panel h3 {
+            font-size: 1.28rem;
+            color: var(--navy);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .thesis-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .thesis-list li {
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.96rem;
+            color: var(--text-main);
+        }
+
+        .thesis-list li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            top: -1px;
+            color: var(--crimson);
+            font-size: 1.2rem;
+        }
+
+        .breakthrough-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, #1e3756 100%);
+            color: #fff;
+            padding: 32px 36px;
+            border-radius: var(--radius);
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .breakthrough-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: rgba(180, 131, 62, 0.25);
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--gold-light);
+        }
+
+        /* --- THẺ HIỆN VẬT & TƯ LIỆU TRƯNG BÀY (ARTIFACT CARDS) --- */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .artifact-card {
+            background: var(--paper-white);
+            border: 1px solid var(--border-archival);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            transition: all 0.35s ease;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .artifact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold);
+        }
+
+        .artifact-media {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background: #231f1e;
+        }
+
+        .artifact-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(18%) contrast(103%);
+            transition: transform 0.5s ease;
+        }
+
+        .artifact-card:hover .artifact-media img {
+            transform: scale(1.07);
+        }
+
+        .artifact-code {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(20, 36, 56, 0.9);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--crimson);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .artifact-body {
+            padding: 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .artifact-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--crimson);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .artifact-body h4 {
+            font-size: 1.12rem;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .artifact-body p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .artifact-source {
+            font-size: 0.78rem;
+            color: #787067;
+            background: var(--parchment);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* --- KHỐI SỐ LIỆU HUY ĐỘNG TOÀN DÂN (1945-1946) --- */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 48px 0;
+        }
+
+        .stat-box {
+            background: var(--parchment);
+            border: 1px solid var(--border-archival);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: var(--crimson);
+            margin-bottom: 6px;
+        }
+
+        .stat-box .lbl {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .stat-box .sub {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* --- BẢNG MA TRẬN ĐỐI CHIẾU SỬ HỌC --- */
+        .matrix-wrapper {
+            margin-top: 40px;
+            background: var(--paper-white);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-archival);
+            box-shadow: var(--shadow-card);
+            overflow-x: auto;
+        }
+
+        .matrix-header-bar {
+            background: var(--navy);
+            color: #fff;
+            padding: 20px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .matrix-header-bar h3 {
+            color: #fff;
+            font-size: 1.25rem;
+        }
+
+        table.archival-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 780px;
+        }
+
+        table.archival-table th {
+            background: #f2ece1;
+            color: var(--navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 0.92rem;
+            text-align: left;
+            padding: 16px 20px;
+            border-bottom: 2px solid var(--border-archival);
+        }
+
+        table.archival-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-archival);
+            font-size: 0.92rem;
+            vertical-align: top;
+        }
+
+        table.archival-table tr:nth-child(even) td {
+            background-color: #fcfaf7;
+        }
+
+        .dimension-cell {
+            font-weight: 700;
+            color: var(--crimson);
+            width: 18%;
+        }
+
+        /* --- TÀI LIỆU THAM KHẢO (ACCORDION) --- */
+        .biblio-section {
+            padding: 70px 0;
+            background: #f3ede2;
+        }
+
+        .biblio-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 30px;
+        }
+
+        .biblio-card {
+            background: var(--paper-white);
+            padding: 28px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-archival);
+        }
+
+        .biblio-card h4 {
+            color: var(--crimson);
+            margin-bottom: 14px;
+            font-size: 1.08rem;
+            border-bottom: 1px solid var(--border-archival);
+            padding-bottom: 10px;
+        }
+
+        .biblio-card ul {
+            padding-left: 18px;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* --- MODAL LIGHTBOX XEM CHI TIẾT TƯ LIỆU --- */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 12, 11, 0.82);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-backdrop.open {
+            display: flex;
+        }
+
+        .modal-card {
+            background: var(--paper-white);
+            max-width: 820px;
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            animation: popIn 0.3s ease;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.94); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-top {
+            background: var(--navy);
+            color: #fff;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            padding: 28px;
+            overflow-y: auto;
+        }
+
+        .modal-img {
+            width: 100%;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-archival);
+        }
+
+        .modal-meta {
+            background: var(--parchment);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border-left: 4px solid var(--crimson);
+            margin-top: 16px;
+            font-size: 0.88rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #14100f;
+            color: rgba(255, 255, 255, 0.78);
+            padding: 44px 0;
+            text-align: center;
+            font-size: 0.92rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 960px) {
+            .analysis-grid-2, .biblio-grid {
+                grid-template-columns: 1fr;
+            }
+            .artifact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .exhibition-hero h1 {
+                font-size: 2.3rem;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-menu {
+                position: fixed;
+                top: 74px;
+                left: 0;
+                width: 100%;
+                background: var(--parchment);
+                flex-direction: column;
+                padding: 24px;
+                border-bottom: 1px solid var(--border-archival);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            .nav-menu.open {
+                transform: translateY(0);
+            }
+            .mobile-btn {
+                display: block;
+            }
+            .artifact-grid, .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            .breakthrough-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH ĐIỀU HƯỚNG TRIỂN LÃM -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="brand-museum">
+                <span class="brand-badge">NHÓM 1 • LSVN</span>
+                <span class="brand-title">Triển Lãm Tư Liệu Số</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#khong-gian-1">Không gian 1 (1858–1945)</a></li>
+                <li><a href="#khong-gian-2">Không gian 2 (1945–1946)</a></li>
+                <li><a href="#khong-gian-3">Không gian 3 (Đối chiếu Indonesia)</a></li>
+                <li><a href="#nguon-tu-lieu">Xuất xứ tư liệu</a></li>
+                <li><a href="index.html" class="btn-home-back"><i class="fas fa-arrow-left"></i> Về hninh.xyz</a></li>
+            </ul>
+            <div class="mobile-btn" id="mobileBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- SẢNH ĐÓN TIẾP TRIỂN LÃM -->
+    <section class="exhibition-hero">
+        <div class="container reveal">
+            <div class="hero-tag">
+                <i class="fas fa-landmark"></i> Dự án Học phần Lịch sử Việt Nam Hiện đại • K70 Khoa Lịch sử (VNU-USSH)
+            </div>
+            <h1>Từ Phong Trào Giải Phóng Dân Tộc Đến <span>Kiến Tạo Nhà Nước</span> (1945–1946)</h1>
+            
+            <div class="central-question-box">
+                <strong><i class="fas fa-compass"></i> Câu hỏi trung tâm nghiên cứu</strong>
+                <p>“Việt Nam Dân chủ Cộng hòa kế thừa và vượt qua những hạn chế của các phong trào yêu nước trước năm 1945 như thế nào?” — Đối chiếu hệ thống tổ chức, tư tưởng và lực lượng chính trị giai đoạn 1858–1945; so sánh quốc tế với Cộng hòa Indonesia từ năm 1945 trở đi.</p>
+            </div>
+
+            <div class="room-nav-pills">
+                <a href="#khong-gian-1" class="room-pill"><i class="fas fa-door-open"></i> Vào Không gian 1: Di sản & Điểm nghẽn</a>
+                <a href="#khong-gian-2" class="room-pill secondary">Không gian 2: Kiến tạo Thể chế</a>
+                <a href="#khong-gian-3" class="room-pill secondary">Không gian 3: Ma trận Việt Nam – Indonesia</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         KHÔNG GIAN 1: BỐI CẢNH KẾ THỪA & ĐIỂM NGHẼN (1858–1945)
+    ========================================================== -->
+    <section class="gallery-room" id="khong-gian-1">
+        <div class="container">
+            <div class="room-header reveal">
+                <span class="room-number">Không gian trưng bày 01 • Giai đoạn 1858–1945</span>
+                <h2>Di Sản Kế Thừa & “Ba Điểm Nghẽn” Của Phong Trào Yêu Nước</h2>
+                <p>Sự ra đời của Nhà nước Việt Nam Dân chủ Cộng hòa năm 1945 không xuất hiện từ hư vô, mà là sự tiếp nối và giải quyết triệt để cuộc khủng hoảng đường lối kéo dài gần một thế kỷ kể từ khi thực dân Pháp xâm lược.</p>
+            </div>
+
+            <!-- 2 Cột Luận điểm: Di sản kế thừa vs Ba điểm nghẽn -->
+            <div class="analysis-grid-2 reveal">
+                <div class="thesis-panel">
+                    <h3><i class="fas fa-seedling" style="color: var(--gold);"></i> Ba nhóm di sản lịch sử được kế thừa</h3>
+                    <ul class="thesis-list">
+                        <li><strong>Duy trì ý thức độc lập dân tộc:</strong> Kháng chiến chống Pháp (1858–1884), phong trào Cần Vương (1885–1896) và khởi nghĩa Yên Thế (1884–1913) đã tách nhiệm vụ bảo vệ chủ quyền khỏi sự đầu hàng của triều Nguyễn, đặt nền móng cho lịch sử Việt Nam hiện đại (David G. Marr).</li>
+                        <li><strong>Bước chuyển tư tưởng dân chủ đầu thế kỷ XX:</strong> Hoạt động của Phan Bội Châu (Đông Du, Duy Tân hội) và Phan Châu Trinh (Duy Tân, Đông Kinh Nghĩa Thục) chuyển mục tiêu từ quân chủ sang dân quyền, dân trí, phá vỡ tính độc tôn của Nho giáo.</li>
+                        <li><strong>Kinh nghiệm thực tiễn & tổ chức:</strong> Tích lũy nghệ thuật chiến tranh du kích, xây dựng căn cứ địa (Hương Khê, Bãi Sậy), đấu tranh báo chí công khai (1925–1926) và mô hình chính đảng hiện đại (Việt Nam Quốc dân đảng, Tân Việt).</li>
+                    </ul>
+                </div>
+
+                <div class="thesis-panel crimson-top">
+                    <h3><i class="fas fa-lock" style="color: var(--crimson);"></i> “Ba điểm nghẽn” dẫn tới khủng hoảng trước 1930</h3>
+                    <ul class="thesis-list">
+                        <li><strong>Bế tắc về đường lối chính trị:</strong> Khuynh hướng phong kiến lỗi thời; trào lưu dân chủ tư sản phân hóa giữa bạo động dựa vào ngoại viện (Phan Bội Châu) và cải cách dựa vào thực dân (Phan Châu Trinh); VNQDĐ chưa giải quyết được quan hệ giải phóng dân tộc và giải phóng giai cấp.</li>
+                        <li><strong>Hạn chế về tổ chức lãnh đạo:</strong> Các cuộc khởi nghĩa cuối thế kỷ XIX hoạt động phân tán, thiếu trung tâm chỉ huy thống nhất. Đầu thế kỷ XX, tổ chức lỏng lẻo khiến khởi nghĩa Yên Bái (2/1930) nổ ra bị động và thất bại.</li>
+                        <li><strong>Thiếu vắng lực lượng nòng cốt:</strong> Sĩ phu và nông dân tự phát thiếu định hướng; tư sản dân tộc nhỏ bé dễ thỏa hiệp; tiểu tư sản thiếu ổn định; giai cấp công nhân giai đoạn đầu còn đơn lẻ, chưa có sự liên kết toàn quốc.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bước ngoặt vượt qua điểm nghẽn -->
+            <div class="breakthrough-banner reveal">
+                <div class="breakthrough-icon"><i class="fas fa-star"></i></div>
+                <div>
+                    <h3 style="color: var(--gold-light); margin-bottom: 6px;">Bước ngoặt vượt qua điểm nghẽn (1930 – 1945)</h3>
+                    <p style="font-size: 0.96rem; color: rgba(255,255,255,0.9);">Sự ra đời của Đảng Cộng sản Việt Nam (1930) cùng Nghị quyết Hội nghị Trung ương 8 (5/1941) đã đặt nhiệm vụ <strong>giải phóng dân tộc lên hàng đầu</strong>, sáng lập Mặt trận Việt Minh và hệ thống Ủy ban Dân tộc Giải phóng từ cơ sở — quy tụ toàn dân chớp thời cơ Tổng khởi nghĩa Tháng Tám 1945.</p>
+                </div>
+            </div>
+
+            <!-- Trưng bày Tư liệu Không gian 1 (Bấm để phóng to) -->
+            <h3 style="margin-bottom: 20px; color: var(--navy);"><i class="fas fa-images"></i> Tư liệu trưng bày tiêu biểu (Nhấp vào thẻ để xem phiếu lưu trữ)</h3>
+            <div class="artifact-grid reveal">
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-01 • Cấu trúc cai trị thuộc địa',
+                    'Bản đồ hành chính Liên bang Đông Dương (1887–1945)',
+                    'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=900&q=80',
+                    'Thực dân Pháp thiết lập Liên bang Đông Dương năm 1887, thực thi chính sách “chia để trị” với 3 chế độ pháp lý khác nhau: Nam Kỳ (thuộc địa trực trị), Trung Kỳ (bảo hộ duy trì triều đình bù nhìn) và Bắc Kỳ (bán bảo hộ/bảo hộ), xóa tên Việt Nam trên bản đồ chính trị thế giới.',
+                    'Đinh Xuân Lâm (Chủ biên) (2017), Lịch sử Việt Nam, Tập III (1858–1945), NXB ĐHQGHN, tr. 130–135.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-01 • Hành chính</span>
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Liên bang Đông Dương">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">1887 – 1945</span>
+                        <h4>Cấu trúc phân liệt “Chia để trị” Liên bang Đông Dương</h4>
+                        <p>Chia cắt Việt Nam thành ba kỳ với ba chế độ pháp lý tách biệt, đặt dưới quyền Toàn quyền Đông Dương.</p>
+                        <div class="artifact-source">Nguồn: Lịch sử Việt Nam, Tập III, NXB ĐHQGHN.</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-02 • Trào lưu canh tân đầu thế kỷ XX',
+                    'Đông Kinh Nghĩa Thục & Phong trào Duy Tân (1907)',
+                    'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=900&q=80',
+                    'Sự chuyển hướng tư tưởng cứu nước từ khôi phục quân chủ sang đề cao dân quyền, dân trí, truyền bá chữ Quốc ngữ và thực nghiệp, mở đầu quá trình hiện đại hóa tư tưởng chính trị Việt Nam.',
+                    'Trần Văn Giàu (1997), Sự phát triển của tư tưởng ở Việt Nam từ thế kỷ XIX đến Cách mạng Tháng Tám, NXB Chính trị quốc gia.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-02 • Tư tưởng</span>
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Trào lưu canh tân">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">1904 – 1908</span>
+                        <h4>Bước chuyển tư tưởng dân chủ tư sản & Khai dân trí</h4>
+                        <p>Dấu ấn của Phan Bội Châu, Phan Châu Trinh và Đông Kinh Nghĩa Thục trong việc phá vỡ độc tôn Nho giáo.</p>
+                        <div class="artifact-source">Nguồn: Trần Văn Giàu (1997); D. G. Marr (1971).</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-03 • Bước ngoặt giải phóng dân tộc',
+                    'Nghị quyết Hội nghị Trung ương 8 & Mặt trận Việt Minh (5/1941)',
+                    'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=900&q=80',
+                    'Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, thành lập Mặt trận Việt Minh với các Hội Cứu quốc và Ủy ban Dân tộc Giải phóng từ cơ sở, giải quyết triệt để khủng hoảng đường lối, tổ chức và lực lượng.',
+                    'Đinh Xuân Lâm (Chủ biên) (2017), Lịch sử Việt Nam, Tập III; Huỳnh Kim Khánh (1971).'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-03 • Bước ngoặt</span>
+                        <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=600&q=80" alt="Mặt trận Việt Minh">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">Tháng 5/1941 – 8/1945</span>
+                        <h4>Mặt trận Việt Minh & Giải quyết ba điểm nghẽn</h4>
+                        <p>Tập hợp khối đại đoàn kết toàn dân qua các Hội Cứu quốc, chuẩn bị lực lượng cho Cách mạng Tháng Tám.</p>
+                        <div class="artifact-source">Nguồn: Lịch sử Việt Nam, Tập III; Tønnesson (1991).</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         KHÔNG GIAN 2: KIẾN TẠO THỂ CHẾ NHÀ NƯỚC VNDCCH (1945–1946)
+    ========================================================== -->
+    <section class="gallery-room room-white" id="khong-gian-2">
+        <div class="container">
+            <div class="room-header reveal">
+                <span class="room-number">Không gian trưng bày 02 • Giai đoạn 1945–1946</span>
+                <h2>Kiến Tạo Thể Chế Hợp Hiến, Huy Động Toàn Dân & Ngoại Giao Hòa Hoãn</h2>
+                <p>Chỉ trong 16 tháng đầu tiên giữa tình thế “ngàn cân treo sợi tóc”, Nhà nước Việt Nam Dân chủ Cộng hòa đã hoàn tất tiến trình lập hiến từ Trung ương xuống cơ sở, huy động sức dân và giữ vững chủ quyền.</p>
+            </div>
+
+            <!-- Trưng bày Hệ thống Sắc lệnh & Cột mốc lập hiến -->
+            <div class="artifact-grid reveal">
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-04 • Xác lập chủ quyền nhân dân',
+                    'Cuộc Tổng tuyển cử đầu tiên (06/01/1946) & Quốc hội khóa I (02/03/1946)',
+                    'https://images.unsplash.com/photo-1540910419892-4a36d2c32665?auto=format&fit=crop&w=900&q=80',
+                    'Thực hiện Sắc lệnh 14-SL (08/09/1945) và 51-SL (17/10/1945), hơn 90% cử tri cả nước đi bỏ phiếu bầu ra 333 đại biểu Quốc hội khóa I (87% công-nông-chiến sĩ, 10 nữ, 34 dân tộc thiểu số). Ngày 02/03/1946, Quốc hội họp kỳ thứ nhất lập Chính phủ Liên hiệp Kháng chiến do Hồ Chí Minh làm Chủ tịch.',
+                    'Đinh Thị Thu Cúc (2017), Lịch sử Việt Nam tập 10 (1945–1950), tr. 75–80; Lê Mậu Hãn (2017), Tập IV, tr. 29–35.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-04 • Lập hiến</span>
+                        <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c32665?auto=format&fit=crop&w=600&q=80" alt="Tổng tuyển cử 1946">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">06/01/1946 & 02/03/1946</span>
+                        <h4>Tổng tuyển cử Phổ thông đầu phiếu & Quốc hội khóa I</h4>
+                        <p>Bầu 333 đại biểu đại diện khối đại đoàn kết, chuyển hóa bộ máy lâm thời thành Chính phủ hợp hiến chính thức.</p>
+                        <div class="artifact-source">Nguồn: Sắc lệnh 14-SL, 51-SL; Lịch sử Việt Nam Tập 10.</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-05 • Đạo luật gốc đầu tiên',
+                    'Hiến pháp nước Việt Nam Dân chủ Cộng hòa (09/11/1946)',
+                    'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=900&q=80',
+                    'Thông qua với 240/242 phiếu tán thành, gồm 7 chương, 70 điều. Khẳng định: “Tất cả quyền bính trong nước là của toàn thể nhân dân Việt Nam” (Điều 1) và “Đất nước Việt Nam là một khối thống nhất Trung, Nam, Bắc không thể phân chia” (Điều 2), bảo đảm quyền tự do dân chủ và bình đẳng nam nữ.',
+                    'Quốc hội nước VNDCCH (1946), Hiến pháp năm 1946; Lê Mậu Hãn (2017), Tập IV, tr. 38–39.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-05 • Hiến pháp</span>
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Hiến pháp 1946">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">09/11/1946</span>
+                        <h4>Hiến pháp năm 1946 — Bản Hiến pháp đầu tiên cõi Á Đông</h4>
+                        <p>Khẳng định chủ quyền thuộc về nhân dân và tính thống nhất bất khả phân của lãnh thổ Trung – Nam – Bắc.</p>
+                        <div class="artifact-source">Nguồn: Văn bản Hiến pháp 1946 (240/242 phiếu thuận).</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-06 • Tổ chức hành chính & Công vụ',
+                    'Sắc lệnh 63-SL (22/11/1945) & Sắc lệnh 75 NV/CC (17/12/1945)',
+                    'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80',
+                    'Sắc lệnh 63-SL thiết lập mô hình chính quyền địa phương gồm Hội đồng nhân dân (cơ quan đại diện do dân bầu) và Ủy ban hành chính (cơ quan chấp hành). Sắc lệnh 75 NV/CC trưng tập toàn bộ công chức trong thời kỳ kháng chiến để duy trì liên tục bộ máy hành chính nhà nước.',
+                    'Trung tâm Lưu trữ Quốc gia III, Phông Phủ Thủ tướng, Hồ sơ 01, tờ 97–108 & 124.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-06 • Lưu trữ</span>
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=80" alt="Sắc lệnh 63-SL">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">Tháng 11 – 12/1945</span>
+                        <h4>Sắc lệnh 63-SL & 75 NV/CC: Thiết lập bộ máy quản trị</h4>
+                        <p>Cụ thể hóa chính quyền địa phương hai thiết chế (HĐND – UBHC) và kỷ luật công vụ thời chiến.</p>
+                        <div class="artifact-source">Nguồn: Trung tâm Lưu trữ Quốc gia III (Phông Phủ Thủ tướng).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Chỉ số Huy động Nguồn lực Toàn dân -->
+            <div class="stats-bar reveal">
+                <div class="stat-box">
+                    <div class="num">370 kg</div>
+                    <div class="lbl">Vàng & 20 triệu đồng</div>
+                    <div class="sub">Quyên góp trong Tuần lễ vàng (17–24/9/1945) & Quỹ Độc lập</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">2,5 Triệu</div>
+                    <div class="lbl">Người thoát mù chữ</div>
+                    <div class="sub">Qua 74.957 lớp Bình dân học vụ sau 1 năm (Sắc lệnh 17, 19, 20/SL)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">26/09/1945</div>
+                    <div class="lbl">Chi đội Nam tiến đầu tiên</div>
+                    <div class="sub">Rời ga Hàng Cỏ chi viện tiền tuyến miền Đông Nam Bộ</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num">Hòa để tiến</div>
+                    <div class="lbl">06/03 & 14/09/1946</div>
+                    <div class="sub">Hiệp định Sơ bộ & Tạm ước đẩy 20 vạn quân Tưởng, tranh thủ chuẩn bị</div>
+                </div>
+            </div>
+
+            <!-- Bảng Ma trận Đối chiếu Thể chế 1858-1945 vs 1945-1946 -->
+            <div class="matrix-wrapper reveal">
+                <div class="matrix-header-bar">
+                    <h3><i class="fas fa-table"></i> Bảng 1: Ma trận đối chiếu thể chế (1858–1945 và 1945–1946)</h3>
+                    <span style="font-size: 0.85rem; color: var(--gold-light);">4 Bình diện phân tích cấu trúc sử học</span>
+                </div>
+                <table class="archival-table">
+                    <thead>
+                        <tr>
+                            <th>Bình diện đối chiếu</th>
+                            <th>Giai đoạn 1858–1945 (Thuộc địa nửa phong kiến)</th>
+                            <th>Giai đoạn 1945–1946 (Nền Dân chủ Cộng hòa)</th>
+                            <th>Bản chất sự chuyển biến</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="dimension-cell">1. Hình thức tổ chức</td>
+                            <td>Cấu trúc phân liệt (“chia để trị” Bắc – Trung – Nam Kỳ dưới Liên bang Đông Dương); chuyên chế, phi hiến, cai trị bằng mật thám và nhà tù.</td>
+                            <td>Chính thể Cộng hòa Dân chủ thống nhất; Tổng tuyển cử (06/01/1946), Hiến pháp 1946 khẳng định lãnh thổ bất khả phân; chính quyền địa phương theo Sắc lệnh 63-SL.</td>
+                            <td>Chuyển từ mô hình cai trị thực dân phân liệt, chuyên chế sang nhà nước công quyền đơn nhất, hợp hiến và dân chủ nhân dân.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">2. Tư tưởng chính trị</td>
+                            <td>Khủng hoảng ý thức hệ phong kiến – tư sản cũ; thực thi chính sách “ngu dân” khiến hơn 90% dân số mù chữ.</td>
+                            <td>Tư tưởng Độc lập dân tộc gắn với Chủ quyền nhân dân (Điều 1 Hiến pháp 1946); cán bộ là “công bộc của dân”; ngoại giao “hòa để tiến”.</td>
+                            <td>Chuyển từ nô dịch thuộc địa sang tư tưởng chủ quyền nhân dân, pháp chế dân chủ và phát triển dân trí.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">3. Lực lượng xã hội</td>
+                            <td>Xã hội phân hóa sâu sắc, đa số nhân dân bị tước đoạt quyền chính trị và bầu cử.</td>
+                            <td>Khối Đại đoàn kết toàn dân (Mặt trận Việt Minh, Hội Liên Việt); quyền bầu cử bình đẳng từ tuổi 18 không phân biệt giới tính, dân tộc, tôn giáo.</td>
+                            <td>Chuyển từ quần chúng bị trị thành công dân bình đẳng, chủ thể tối cao của quyền lực nhà nước.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">4. Năng lực quản trị</td>
+                            <td>Quản trị bóc lột dựa trên độc quyền thuế muối, rượu, thuốc phiện; bất lực trước khủng hoảng dẫn tới nạn đói 1944–1945.</td>
+                            <td>Thể chế hóa thần tốc (Sắc lệnh 67 cứu tế, Sắc lệnh 75 NV/CC trưng tập công chức); lưu hành tiền Việt Nam, xóa mù chữ hơn 2,5 triệu người.</td>
+                            <td>Chuyển từ hành chính bóc lột, quan liêu sang quản trị hành chính – kiến tạo, linh hoạt và phục vụ an sinh.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         KHÔNG GIAN 3: ĐỐI CHIẾU QUỐC TẾ VIỆT NAM – INDONESIA
+    ========================================================== -->
+    <section class="gallery-room" id="khong-gian-3">
+        <div class="container">
+            <div class="room-header reveal">
+                <span class="room-number">Không gian trưng bày 03 • Đối chiếu Khu vực Đông Nam Á</span>
+                <h2>Việt Nam (1945–1946) và Cộng Hòa Indonesia (1945 Trở Đi)</h2>
+                <p>Cùng tuyên bố độc lập vào mùa thu năm 1945 sau Thế chiến II, hai quốc gia tiêu biểu của Đông Nam Á đã giải quyết bài toán tính chính danh, thiết chế nhà nước và chống tái chiếm thực dân theo những quỹ đạo đặc thù.</p>
+            </div>
+
+            <!-- 3 Thẻ đối chiếu điểm nhấn Indonesia -->
+            <div class="artifact-grid reveal">
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-07 • Triết lý lập quốc Indonesia',
+                    'Tuyên ngôn Độc lập (17/08/1945) & Học thuyết Pancasila',
+                    'https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=900&q=80',
+                    'Sukarno đề xướng học thuyết Pancasila (1/6/1945) làm nền tảng triết lý quốc gia trong Hiến pháp 1945 (UUD 1945) nhằm dung hòa các xu hướng dân tộc thế tục, Hồi giáo và cánh tả, gắn kết quần đảo đa sắc tộc dưới khẩu hiệu “Bhinneka Tunggal Ika” (Thống nhất trong đa dạng).',
+                    'Arsip Nasional Republik Indonesia (ANRI), Proklamasi Kemerdekaan Indonesia (17/8/1945) & Undang-Undang Dasar 1945.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-07 • Tư tưởng</span>
+                        <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?auto=format&fit=crop&w=600&q=80" alt="Indonesia 1945">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">17/08/1945 • Jakarta</span>
+                        <h4>Học thuyết Pancasila & Bài toán “Thống nhất trong đa dạng”</h4>
+                        <p>Nền tảng tư tưởng dung hòa các xu hướng chính trị – tôn giáo trên quần đảo hàng nghìn hòn đảo.</p>
+                        <div class="artifact-source">Nguồn: Lưu trữ Quốc gia Indonesia (ANRI).</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-08 • Ngoại giao & Giằng co thể chế',
+                    'Hiệp định Linggadjati (1947), Renville (1948) & Nghị quyết LHQ',
+                    'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=80',
+                    'Trước sức ép tái chiếm và chia cắt thành mô hình liên bang (RIS) của thực dân Hà Lan, nội các Sukarno – Hatta kết hợp đấu tranh vũ trang (Revolusi Nasional) với đàm phán (Linggadjati 1947, Renville 1948) và đưa vấn đề ra Hội đồng Bảo an Liên Hợp Quốc (Nghị quyết 41 & 55 năm 1948), tiến tới Hội nghị La Hay 1949.',
+                    'UN Security Council Resolutions 41 & 55 (1948); Lương Ninh (Chủ biên) (2005), Lịch sử Đông Nam Á, tr. 418–419.'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-08 • Ngoại giao</span>
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=600&q=80" alt="Đàm phán ngoại giao">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">1947 – 1949 • Liên Hợp Quốc</span>
+                        <h4>Đấu tranh chống liên bang hóa & Vận động quốc tế</h4>
+                        <p>Giằng co bảo vệ Nhà nước thống nhất (NKRI) qua các hiệp định ngừng bắn và diễn đàn Liên Hợp Quốc.</p>
+                        <div class="artifact-source">Nguồn: Hồ sơ Hội đồng Bảo an LHQ (S/RES/41, S/RES/55).</div>
+                    </div>
+                </div>
+
+                <div class="artifact-card" onclick="openArtifact(
+                    'TL-09 • Xung đột nội bộ & Huy động lực lượng',
+                    'Thanh niên Pemuda & Thử thách thống nhất nội bộ (Biến cố Madiun 1948)',
+                    'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=900&q=80',
+                    'Indonesia huy động lực lượng vũ trang chính quy, thanh niên xung kích (Pemuda) và tiếng phổ thông Bahasa Indonesia. Tuy nhiên, bất đồng quanh nhượng bộ lãnh thổ dẫn tới biến cố Madiun (9/1948) và ly khai Darul Islam — cho thấy lợi thế vượt trội của khối đại đoàn kết Việt Minh tại Việt Nam.',
+                    'Adrian Vickers (2013), A History of Modern Indonesia, Cambridge University Press; David G. Marr (2013).'
+                )">
+                    <div class="artifact-media">
+                        <span class="artifact-code">TL-09 • So sánh</span>
+                        <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=600&q=80" alt="So sánh lực lượng">
+                        <span class="zoom-hint"><i class="fas fa-expand"></i></span>
+                    </div>
+                    <div class="artifact-body">
+                        <span class="artifact-date">1945 – 1950</span>
+                        <h4>Phép thử đoàn kết nội bộ: Việt Minh vs Quần đảo Indonesia</h4>
+                        <p>So sánh mức độ gắn kết lãnh thổ và đồng thuận xã hội giữa hai quốc gia hậu Thế chiến II.</p>
+                        <div class="artifact-source">Nguồn: Vickers (2013); Poeze & Nordholt (2024).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bảng Ma trận So sánh Quốc tế -->
+            <div class="matrix-wrapper reveal">
+                <div class="matrix-header-bar" style="background: var(--crimson-dark);">
+                    <h3><i class="fas fa-globe-asia"></i> Bảng 2: Ma trận so sánh quốc tế Việt Nam (1945–1946) & Cộng hòa Indonesia (1945 trở đi)</h3>
+                </div>
+                <table class="archival-table">
+                    <thead>
+                        <tr>
+                            <th>Tiêu chí so sánh</th>
+                            <th>Việt Nam Dân chủ Cộng hòa (1945–1946)</th>
+                            <th>Cộng hòa Indonesia (1945–1949)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="dimension-cell">1. Nền tảng tư tưởng lập quốc & Tính chính danh</td>
+                            <td>Độc lập dân tộc gắn với quyền làm chủ của nhân dân; củng cố tính chính danh qua Tuyên ngôn 02/09/1945, Tổng tuyển cử 06/01/1946 và Hiến pháp 1946.</td>
+                            <td>Học thuyết <strong>Pancasila</strong> (5 nguyên tắc, cô đọng thành 3 nguyên tắc) dung hòa các khuynh hướng dân tộc thế tục, Hồi giáo và cánh tả; Tuyên ngôn 17/08/1945.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">2. Mô hình bộ máy & Thiết chế hiến định</td>
+                            <td>Nhà nước đơn nhất, thống nhất Trung – Nam – Bắc; phân định phối hợp giữa Nghị viện nhân dân, Chủ tịch nước, Chính phủ và HĐND – UBHC các cấp.</td>
+                            <td>Hiến pháp 18/08/1945 tập trung quyền hành pháp vào Tổng thống; chịu sức ép liên bang hóa (RIS 1949) từ Hà Lan trước khi trở lại nhà nước đơn nhất năm 1950.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">3. Sách lược với thực dân cũ & Đối lập nội bộ</td>
+                            <td>Chủ động “hòa để tiến” (Hiệp định Sơ bộ 06/03/1946, Tạm ước 14/09/1946) đẩy 20 vạn quân Tưởng; hòa giải, mở rộng ghế Quốc hội cho Việt Quốc, Việt Cách.</td>
+                            <td>Kết hợp đấu tranh vũ trang và thương lượng (Linggadjati 1947, Renville 1948, ranh giới Van Mook), đưa vấn đề ra LHQ; nội bộ nổ ra xung đột Madiun (1948) và ly khai Darul Islam.</td>
+                        </tr>
+                        <tr>
+                            <td class="dimension-cell">4. Huy động toàn dân & Đoàn kết dân tộc</td>
+                            <td>Kế thừa truyền thống quốc gia – dân tộc thống nhất từ sớm; quy tụ toàn dân qua Mặt trận Việt Minh và Hội Liên Việt từ cứu đói, xóa mù chữ đến kháng chiến.</td>
+                            <td>Không gian quần đảo đa sắc tộc, ngôn ngữ; bồi đắp gắn kết qua tinh thần <em>Bhinneka Tunggal Ika</em>, tiếng <em>Bahasa Indonesia</em>, quân đội và thanh niên <em>Pemuda</em>.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         THƯ MỤC TÀI LIỆU THAM KHẢO & XUẤT XỨ TƯ LIỆU
+    ========================================================== -->
+    <section class="biblio-section" id="nguon-tu-lieu">
+        <div class="container reveal">
+            <div class="room-header" style="margin-bottom: 20px;">
+                <span class="room-number">Hồ sơ Thư mục & Dẫn xuất xứ</span>
+                <h2 style="font-size: 2rem;">Danh Mục Tài Liệu Lưu Trữ & Công Trình Nghiên Cứu</h2>
+                <p>Toàn bộ luận điểm và hiện vật số trong triển lãm được đối chiếu từ hệ thống văn bản pháp quy lưu trữ quốc gia và các chuyên khảo sử học trong nước, quốc tế.</p>
+            </div>
+
+            <div class="biblio-grid">
+                <div class="biblio-card">
+                    <h4><i class="fas fa-archive"></i> A. Tư liệu lưu trữ sơ cấp & Văn bản pháp quy</h4>
+                    <ul>
+                        <li>Chính phủ Lâm thời nước VNDCCH (1945), <em>Sắc lệnh số 14-SL (08/09/1945) & Sắc lệnh số 51-SL (17/10/1945)</em> về Tổng tuyển cử bầu Quốc hội.</li>
+                        <li>Chính phủ Lâm thời nước VNDCCH (1945), <em>Sắc lệnh số 17-SL (08/09/1945)</em> về đặt ra Bình dân học vụ trong toàn cõi Việt Nam.</li>
+                        <li>Chính phủ Lâm thời nước VNDCCH (1945), <em>Sắc lệnh số 63-SL (22/11/1945)</em> về tổ chức Hội đồng nhân dân và Ủy ban hành chính các cấp (TTLTQG III, Phông Phủ Thủ tướng, Hồ sơ 01, tờ 97–108).</li>
+                        <li>Chính phủ Lâm thời nước VNDCCH (1945), <em>Sắc lệnh số 67 (28/11/1945) & Sắc lệnh số 75 NV/CC (17/12/1945)</em> về cứu tế và trưng tập công chức thời chiến (TTLTQG III, tờ 114, 124).</li>
+                        <li>Quốc hội nước VNDCCH (1946), <em>Hiến pháp nước Việt Nam Dân chủ Cộng hòa năm 1946</em>.</li>
+                        <li>Arsip Nasional Republik Indonesia (ANRI), <em>Proklamasi Kemerdekaan Indonesia (17/8/1945)</em> & <em>Undang-Undang Dasar Negara Republik Indonesia (1945)</em>.</li>
+                        <li>UN Security Council (1948), <em>Resolutions 41 (S/RES/41) & 55 (S/RES/55)</em> [The Indonesian Question].</li>
+                    </ul>
+                </div>
+
+                <div class="biblio-card">
+                    <h4><i class="fas fa-book"></i> B. Giáo trình, Chuyên khảo & Bài báo khoa học</h4>
+                    <ul>
+                        <li>Đinh Xuân Lâm (Chủ biên) (2017), <em>Lịch sử Việt Nam, Tập III: Từ 1858 đến 1945</em>, NXB Đại học Quốc gia Hà Nội.</li>
+                        <li>Đinh Thị Thu Cúc (2017), <em>Lịch sử Việt Nam, Tập 10: Từ năm 1945 đến năm 1950</em>, NXB Khoa học Xã hội, Hà Nội.</li>
+                        <li>Lê Mậu Hãn (Chủ biên) (2017), <em>Lịch sử Việt Nam, Tập IV: Từ 1945 đến 2005</em>, NXB Đại học Quốc gia Hà Nội.</li>
+                        <li>Đảng Cộng sản Việt Nam (2000), <em>Văn kiện Đảng toàn tập, Tập 8 (1945–1947)</em>, NXB Chính trị quốc gia, Hà Nội.</li>
+                        <li>Trần Văn Giàu (1997), <em>Sự phát triển của tư tưởng ở Việt Nam từ thế kỷ XIX đến Cách mạng Tháng Tám</em>, NXB Chính trị quốc gia.</li>
+                        <li>Lương Ninh (Chủ biên) (2005), <em>Lịch sử Đông Nam Á</em>, NXB Giáo dục, Hà Nội.</li>
+                        <li>David G. Marr (1971), <em>Vietnamese Anticolonialism, 1885–1925</em>; (2013), <em>Vietnam: State, War, and Revolution (1945–1946)</em>, University of California Press.</li>
+                        <li>Adrian Vickers (2013), <em>A History of Modern Indonesia</em>, Cambridge University Press; Harry Poeze & Henk Schulte Nordholt (2024), <em>Merdeka</em>, Amsterdam University Press.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p style="color: #fff; font-weight: 700; margin-bottom: 6px;">Triển Lãm Tư Liệu Số — Nhóm 1 • Học phần Lịch sử Việt Nam Hiện đại</p>
+            <p>Thiết kế & Lưu trữ trực tuyến tại <strong>hninh.xyz/trien-lam.html</strong> • Khoa Lịch sử, Trường ĐHKHXH&NV - ĐHQGHN (2026).</p>
+        </div>
+    </footer>
+
+    <!-- CỬA SỔ LIGHTBOX XEM CHI TIẾT HIỆN VẬT -->
+    <div class="modal-backdrop" id="artifactModal" onclick="closeArtifact(event)">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <div class="modal-top">
+                <span id="modalCode" style="font-weight: 700; color: var(--gold-light); font-size: 0.9rem;">MÃ TƯ LIỆU</span>
+                <button class="modal-close" onclick="closeArtifactDirect()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-content">
+                <img id="modalImg" class="modal-img" src="" alt="Chi tiết tư liệu">
+                <h3 id="modalTitle" style="font-size: 1.45rem; color: var(--navy); margin-bottom: 12px;"></h3>
+                <p id="modalDesc" style="color: var(--text-main); font-size: 0.98rem;"></p>
+                <div class="modal-meta">
+                    <strong style="color: var(--crimson);"><i class="fas fa-bookmark"></i> Xuất xứ & Nguồn lưu trữ:</strong>
+                    <span id="modalSource" style="display: block; margin-top: 4px; color: var(--text-muted);"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT XỬ LÝ TƯƠNG TÁC -->
+    <script>
+        // 1. Menu Mobile
+        const mobileBtn = document.getElementById('mobileBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileBtn && navMenu) {
+            mobileBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('open');
+                });
+            });
+        }
+
+        // 2. Hiệu ứng xuất hiện khi cuộn trang
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // 3. Lightbox Xem chi tiết từng tư liệu
+        const modal = document.getElementById('artifactModal');
+        function openArtifact(code, title, imgSrc, desc, source) {
+            document.getElementById('modalCode').textContent = code;
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('modalSource').textContent = source;
+            modal.classList.add('open');
+        }
+
+        function closeArtifact(e) {
+            if (e.target === modal) {
+                modal.classList.remove('open');
+            }
+        }
+
+        function closeArtifactDirect() {
+            modal.classList.remove('open');
+        }
+    </script>
+</body>
+</html>
