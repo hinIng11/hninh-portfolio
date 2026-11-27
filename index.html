@@ -742,34 +742,126 @@
         }
 
         @media (max-width: 680px) {
-            .nav-links {
-                position: fixed;
-                top: 76px;
-                left: 0;
-                width: 100%;
-                background: #fff;
-                flex-direction: column;
-                padding: 24px;
-                gap: 20px;
-                border-bottom: 1px solid var(--border-color);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-            }
-            .nav-links.open {
-                transform: translateY(0);
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .stats-grid, .volunteer-showcase, .hobbies-grid {
-                grid-template-columns: 1fr;
-            }
-            .floating-card {
-                left: 12px;
-                bottom: 12px;
-                padding: 12px 16px;
-            }
-        }
+    .container {
+        width: 94%;
+        padding: 0 12px;
+    }
+
+    section {
+        padding: 60px 0; /* Giảm khoảng trống thừa trên dưới */
+    }
+
+    /* Menu Mobile dạng thẻ nổi gọn gàng, có đổ bóng */
+    .nav-container {
+        height: 66px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 66px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 15px 30px rgba(15, 41, 74, 0.12);
+        transform: translateY(-150%);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 6px 0;
+        font-size: 1.05rem;
+    }
+
+    .menu-toggle {
+        display: block;
+        padding: 8px;
+    }
+
+    /* Tối ưu Hero Banner trên điện thoại */
+    .hero {
+        padding-top: 105px;
+        padding-bottom: 60px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.1rem;
+        line-height: 1.25;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin: 0 auto 24px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column; /* Nút bấm xếp dọc full chiều ngang dễ bấm bằng ngón cái */
+        gap: 12px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-image-wrap {
+        max-width: 340px;
+        margin: 10px auto 0;
+    }
+
+    .floating-card {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -16px;
+        width: 90%;
+        padding: 12px 14px;
+        justify-content: center;
+    }
+
+    /* Căn chỉnh tiêu đề & các lưới thẻ */
+    .section-header {
+        margin-bottom: 36px;
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .stats-grid, .volunteer-showcase, .hobbies-grid, .mini-gallery {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .v-card {
+        height: 230px;
+    }
+
+    /* Tối ưu Form liên hệ trên màn hình nhỏ */
+    .contact-wrapper {
+        padding: 28px 18px;
+        border-radius: 18px;
+        gap: 28px;
+    }
+
+    .contact-info h2 {
+        font-size: 1.75rem;
+    }
+
+    .contact-form {
+        padding: 22px 16px;
+    }
+}
     </style>
 </head>
 <body>
@@ -892,7 +984,7 @@
                 <div class="stat-card">
                     <div class="stat-number">100+</div>
                     <div class="stat-label">Thành viên mới</div>
-                    <p class="stat-desc">Trực tiếp điều phối cơ cấu tổ chức, đào tạo và đồng hành cùng hơn 100 tình nguyện viên thế hệ mới.</p>
+                    <p class="stat-desc">Trực tiếp điều phối, đào tạo và đồng hành cùng hơn 100 tình nguyện viên thế hệ mới.</p>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">Phó ban</div>
@@ -900,7 +992,7 @@
                     <p class="stat-desc">Chiến dịch "Gieo Miền Nắng" tại xã Púng Luông, Lào Cai – kết nối nguồn lực vì cộng đồng vùng cao.</p>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">Ánh Ngàn</div>
+                    <div class="stat-number">Gieo Miền Nắng</div>
                     <div class="stat-label">Dự án Đèn Năng Lượng Mặt Trời</div>
                     <p class="stat-desc">Triển khai lắp đặt hệ thống chiếu sáng bền vững, thắp sáng những tuyến đường bản vùng cao.</p>
                 </div>

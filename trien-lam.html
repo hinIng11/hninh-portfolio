@@ -767,32 +767,120 @@ table.archival-table tbody tr:hover td {
         }
 
         @media (max-width: 680px) {
-            .nav-menu {
-                position: fixed;
-                top: 74px;
-                left: 0;
-                width: 100%;
-                background: var(--parchment);
-                flex-direction: column;
-                padding: 24px;
-                border-bottom: 1px solid var(--border-archival);
-                transform: translateY(-150%);
-                transition: transform 0.3s ease;
-            }
-            .nav-menu.open {
-                transform: translateY(0);
-            }
-            .mobile-btn {
-                display: block;
-            }
-            .artifact-grid, .stats-bar {
-                grid-template-columns: 1fr;
-            }
-            .breakthrough-banner {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+    .container {
+        width: 94%;
+        padding: 0 12px;
+    }
+
+    .nav-container {
+        height: 66px;
+    }
+
+    .brand-title {
+        font-size: 0.95rem;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 66px;
+        left: 0;
+        width: 100%;
+        background: rgba(250, 247, 242, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border-archival);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-150%);
+        transition: transform 0.35s ease;
+    }
+
+    .nav-menu.open {
+        transform: translateY(0);
+    }
+
+    .mobile-btn {
+        display: block;
+        padding: 8px;
+    }
+
+    /* Sảnh đón tiếp gọn gàng trên điện thoại */
+    .exhibition-hero {
+        padding: 105px 0 60px;
+    }
+
+    .exhibition-hero h1 {
+        font-size: 1.85rem;
+        line-height: 1.3;
+    }
+
+    .central-question-box {
+        padding: 16px 18px;
+    }
+
+    .central-question-box p {
+        font-size: 0.95rem;
+    }
+
+    .room-nav-pills {
+        flex-direction: column;
+    }
+
+    .room-pill {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+
+    /* Không gian trưng bày & Thẻ hiện vật */
+    .gallery-room {
+        padding: 55px 0;
+    }
+
+    .room-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .thesis-panel {
+        padding: 22px 18px;
+    }
+
+    .breakthrough-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+    }
+
+    .artifact-grid, .stats-bar, .biblio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Sửa lỗi bảng ma trận bị ép chữ trên điện thoại: Cho phép vuốt ngang mượt mà */
+    table.archival-table {
+        table-layout: auto;
+        min-width: 720px; /* Giữ độ rộng chuẩn để chữ không bị bóp nát, người dùng vuốt ngang để đọc */
+    }
+
+    table.archival-table th,
+    table.archival-table td {
+        padding: 14px 16px;
+        font-size: 0.88rem;
+    }
+
+    /* Cửa sổ Lightbox xem ảnh trên điện thoại */
+    .modal-card {
+        width: 96%;
+        max-height: 88vh;
+    }
+
+    .modal-content {
+        padding: 18px;
+    }
+}
     </style>
 </head>
 <body>
